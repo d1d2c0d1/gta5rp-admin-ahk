@@ -311,14 +311,14 @@ return
 return
 
 ; Обновление страницы репортов
-!8::
+F8::
     ClickComponent("update")
 return
 
 ; ----------
 ; Быстрая авторизация
 ; ----------
-!p::
+!F12::
     SendInput, t
     Sleep, 300
 
@@ -376,7 +376,7 @@ F7::
 return
 
 ; GUI Helper
-!NumPad1::
+!F9::
 
     State2:=!State2
 
@@ -418,21 +418,21 @@ return
         GUI, ADD, TEXT, cBlue, ФУНКЦИИ:
 
         GUI, ADD, TEXT, cYellow, Alt+S - Посчитать первичный ответ
-        GUI, ADD, TEXT, cYellow, Alt+P - Авиризоваться
+        GUI, ADD, TEXT, cYellow, Alt+F12 - Авиризоваться
         GUI, ADD, TEXT, cYellow, Alt+Y - REOF
         GUI, ADD, TEXT, cYellow, Alt+V - Поиск новых репортов
         GUI, ADD, TEXT, cYellow, F7 - Выключить поиск (Если багует)
         
         WinSet, TransColor, %CustomColor3% 210
 
-        Gui, Show, x0 y460 NoActivate, window. 
+        Gui, Show, x0 y0 NoActivate, window. 
 
     }
 
 return
 
 ; GUI Helper for console commands
-!NumPad2::
+!F10::
 
     State3:=!State3
 
@@ -473,14 +473,14 @@ return
         
         WinSet, TransColor, %CustomColor3% 210
 
-        Gui, Show, x0 y460 NoActivate, window. 
+        Gui, Show, x0 y0 NoActivate, window. 
 
     }
 
 return
 
 ; GUI Counter reports
-!NumPad3::
+!F11::
     State4 := !State4
     
     Gui Destroy
