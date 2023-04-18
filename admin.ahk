@@ -1,5 +1,21 @@
 #NoEnv
 #SingleInstance force
+#MaxHotkeysPerInterval 99000000
+#HotkeyInterval 99000000
+#KeyHistory 0
+
+ListLines Off
+Process, Priority, , A
+SetBatchLines, -1
+SetKeyDelay, -1, -1
+SetMouseDelay, -1
+SetDefaultMouseSpeed, 0
+SetWinDelay, -1
+SendMode Input
+SetWorkingDir %A_ScriptDir%
+SetNumlockState, AlwaysOn
+SetCapsLockState, AlwaysOff
+SetScrollLockState, AlwaysOff
 
 global AdminPassword
 AdminPassword = UNDEFINED_PASSWORD
@@ -93,13 +109,18 @@ return
 ; Микрофон
 !7::
     ClickComponent("input")
-    SendInput, ПЕРВОЕ: Проверьте настроен ли Ваш микрофон для использования с ПК (работает ли он в других приложениях?). Если не работает - попробуйте переустановить драйвер или поставить микрофон на другое устройство, если таковое имеется (все равно не работает? - возможно у Вас механическое повреждение микрофона, проверьте стыковки и провод Вашего микрофона на наличие повреждений - это важно{!}). ВТОРОЕ (для пользователей Windows): проверьте настройку микрофона в ‘Панели управлением звуков’ как основное и по умолчанию (если у Вас другая ОС (операционная система), то пропустите данный пункт). Для открытия панели зайдите в настройки Windows (кнопка ПУСК - шестеренка (для Win10)) - Параметры звука - Соответствующие параметры - Панель управления звуком - Запись - Ищите свой микрофон и нажимаете правой кнопкой мыши на панельку с ним - Использовать по умолчанию & Использовать устройство связи по умолчанию. Если игра запущена: отбегите и нажмите несколько раз клавишу F3 для перезагрузки голосового чата, после - проверьте Ваш микрофон. ТРЕТЬЕ: При запуске игры через RAGE Multiplayer Launcher перейдите в раздел настройки (помечается в окне справа вверху как ‘эквалайзер’, ползунки на вертикальных полосках) и проверьте включен ли Ваш микрофон в разделе голосового чата, а так же выбрал ли верный из всех возможных доступных звукозаписывающих устройств в разделе ‘Устройство ввода’. ВЫВОД: Не один из пунктов не помог? - попробуйте обратиться в тех раздел на форуме проекта для более подробной инструкции (forum.gta5rp.com - Технический раздел - Downtown |Технический раздел); Сработало? - доброй Вам игры{!}
+    SendInput, Уважаемый игрок, попробуйте следующие способы{!} ПЕРВОЕ: Проверьте настроен ли Ваш микрофон для использования с ПК (работает ли он в других приложениях?). Если не работает - попробуйте переустановить драйвер или поставить микрофон на другое устройство, если таковое имеется (все равно не работает? - возможно у Вас механическое повреждение микрофона, проверьте стыковки и провод Вашего микрофона на наличие повреждений - это важно{!}). ВТОРОЕ (для пользователей Windows): проверьте настройку микрофона в ‘Панели управлением звуков’ как основное и по умолчанию (если у Вас другая ОС (операционная система), то пропустите данный пункт). Для открытия панели зайдите в настройки Windows (кнопка ПУСК - шестеренка (для Win10)) - Параметры звука - Соответствующие параметры - Панель управления звуком - Запись - Ищите свой микрофон и нажимаете правой кнопкой мыши на панельку с ним - Использовать по умолчанию & Использовать устройство связи по умолчанию. Если игра запущена: отбегите и нажмите несколько раз клавишу F3 для перезагрузки голосового чата, после - проверьте Ваш микрофон. ТРЕТЬЕ: При запуске игры через RAGE Multiplayer Launcher перейдите в раздел настройки (помечается в окне справа вверху как ‘эквалайзер’, ползунки на вертикальных полосках) и проверьте включен ли Ваш микрофон в разделе голосового чата, а так же выбрал ли верный из всех возможных доступных звукозаписывающих устройств в разделе ‘Устройство ввода’. ВЫВОД: Не один из пунктов не помог? - попробуйте обратиться в тех раздел на форуме проекта для более подробной инструкции (forum.gta5rp.com - Технический раздел - Downtown |Технический раздел); Сработало? - доброй Вам игры{!}
 return
 
 ; Взять бабочку заново
 !8::
     ClickComponent("input")
     SendInput, Скорее всего Вы не успели приехать за 10 минут/она умерла (после ДТП) или Вы перезашли на сервер. Возьмите задание снова у NPC на титуле.
+return
+
+!9::
+    ClickComponent("input")
+    SendInput, Во-первых, проверьте, что в F10-Настройки-Интерфейс-Отображать_HUD стоит ДА. Попробуйте использовать сочетание клавиш AltА4, выход из игры не подтверждайте, нажмите Esc. Полностью перезайдите в игру (не через F1), может потребоваться перезайти 2 раза. Воспользуйтесь адекватным VPN для исключения проблемы с соединением (Windscribe, NordVPN, Proton). Очистите папку client_resources (в папке RAGEMP), удалите ragemp_v, config.xml, multiplayer.dll, multiplayerL.dll, запустите updater.exe от имени администратора, в списке выберите GTA5RP.COM | DownTown, дождитесь загрузки и установки, перезайдите в игру 2 раза (не через F1). Удалите стороннее антивирусное ПО (Kaspersky, Avast, Iobit, Eset, Malvarebytes и т.п.), сторонние файрволы, Adguard, Wallpaper engine, MSI Afterburner, MSI Mystic light и аналогичные, для управления подсветкой и блокировки рекламы. Добавьте папки с GTAV и RAGEMP в исключения защитника Windows. Отключите защиту в реальном времени. Отключите, либо удалите ПО от Razer если установлyно. Также Process Lasso и Park Control, Memreduct, Advanced system care и подобные. Также отключите Xbox game bar и его оверлей, повтор xbox, оверлей дискорд, удалите betterdiscord, отключите оверлей стим и прочие оверлеи, кроме geforce experience/AMD Relive. GTA V, разумеется, должна быть чистой, без модификаций, не иметь файла commandline и прочих посторонних файлов в папке с игрой. Если способы без перезапуска игры не помогли, не забудьте сохранить скриншот этого сообщения.
 return
 
 ; Наказание выдано верно
@@ -174,30 +195,42 @@ return
     SendInput, Уважаемый игрок, обратитесь пожалуйста в нашу поддержку по ссылке: https://gta5rp.com/support{!}
 return
 
+; Воспользуйтесь GPS
+!h::
+    ClickComponent("input")
+    SendInput, Чтобы найти желаемое функциональное место, используйте различные методы, доступные для поиска точек интереса. Телефон - GPS. Вы также можете сориентироваться по карте через ESC, справа имеется легенда с названием мест и соответствующими иконками (если она у Вас не отображается, нажмите TAB, находясь в активном окне карты). Если Вы желаете найти информацию по контракту, то она находится в Телефон - Контракты. Также определенные метки на карте можно получить через F10 - Помощь (?), согласно категориям, или через F10 - Задания.
+return
+
+; Не знает как искать на форуме
+!x::
+    ClickComponent("input")
+    SendInput, Уважаемый игрок, чтобы найти жалобу, по которой Вы были наказаны, зайдите на форум: forum.gta5rp.com - Поиск - (Ваш ник в формате Имя_Фамилия). Не забудьте авторизоваться на форуме.
+return
+
 ; ========================== Блок наказаний ===========================
 
 ::pg+::
-    SendInput,prison  20 PG{left 6}
+    SendInput,prison  30 PG{left 6}
 return
 
 ::nrd+::
-    SendInput,prison  10 NonRP Drive{left 15}
+    SendInput,prison  20 NonRP Drive{left 15}
 return
 
 ::nsp+::
-    SendInput,mute  30 Non RP SoundPad{left 19}
+    SendInput,mute  60 Non RP SoundPad{left 19}
 return
 
 ::zap+::
-    SendInput,mute  15 Запретные слова{left 21}
+    SendInput,mute  30 Запрещенные слова{left 21}
 return
 
 ::ooc+::
-    SendInput,mute  20 OOC in IC{left 13}
+    SendInput,mute  30 OOC in IC{left 13}
 return
 
 ::dm+::
-    SendInput,prison  30 DM{left 6}
+    SendInput,prison  20 DM{left 6}
 return
 
 ::dmzz+::
@@ -217,7 +250,7 @@ return
 return
 
 ::amo+::
-    SendInput,prison  40 Аморальные действия в отношении других игроков{left 48}
+    SendInput,prison  40 Аморальные действия в отношении других игроков{left 50}
 return
 
 ::lut+::
@@ -250,6 +283,32 @@ return
 
 ::rk+::
     SendInput, prison  40 RK{left 6}
+return
+
+::uho+::
+    SendInput, prison  100 Уход от RP{left 15}
+return
+
+; =========================== Warns in PM ==================
+
+::pmnrd+::
+    SendInput, pm  Не нарушайте пожалуйста пункт 6.2 правил проекта (NonRP Drive){!}{left 61}
+return
+
+::pmooc+::
+    SendInput, pm  Не переходите на OOC in IC{!}{left 28}
+return
+
+::pmmic+::
+    SendInput, pm  Не нарушайте правила использования микрофона{!}{left 46}
+return
+
+::pmsp+::
+    SendInput, pm  Предоставьте пожалуйста видеофиксацию отыгровки SoundPad в личные сообщения Discord: ctaciv#0001{left 97}
+return
+
+::pmna+::
+    SendInput, pm  Предоставьте пожалуйста видеофиксацию начала ситуации в личные сообщения Discord: ctaciv#0001{left 94}
 return
 
 ; ======================== Other ========================
@@ -415,6 +474,7 @@ return
         GUI, ADD, TEXT, cYellow, Alt+6 - Нарушение правил подачи Репорта
         GUI, ADD, TEXT, cYellow, Alt+7 - Не работает МИКРОФОН
         GUI, ADD, TEXT, cYellow, Alt+8 - Не сдается бабочка
+        GUI, ADD, TEXT, cYellow, Alt+9 - Пропал HUD/Карта
         GUI, ADD, TEXT, cYellow, Alt+0 - Вы получили наказание от Администрации
         GUI, ADD, TEXT, cYellow, Alt+Q - Закрываю репорт
         GUI, ADD, TEXT, cYellow, Alt+W - Решите через СУД или ПРОКОВ
@@ -427,10 +487,10 @@ return
         GUI, ADD, TEXT, cYellow, Alt+G - Уточните ВОПРОС
         GUI, ADD, TEXT, cYellow, Alt+C - Узнайте у ИГРОКОВ
         GUI, ADD, TEXT, cYellow, Alt+B - SUPPORT (при блоке)
+        GUI, ADD, TEXT, cYellow, Alt+H - Спрашивает где, что-то находится (GPS)
+        GUI, ADD, TEXT, cYellow, Alt+X - Как найти жалобу на форуме
 
-        GUI, ADD, TEXT, cYellow,
         GUI, ADD, TEXT, cBlue, ФУНКЦИИ:
-
         GUI, ADD, TEXT, cYellow, Alt+S - Посчитать первичный ответ
         GUI, ADD, TEXT, cYellow, Alt+F12 - Авиризоваться
         GUI, ADD, TEXT, cYellow, Alt+Y - REOF
@@ -455,6 +515,8 @@ return
 
     If State3
     {
+
+        ScreenData := GettingScreenResolution()
 
         CustomColor3 = EEAA99
 
@@ -486,9 +548,17 @@ return
         GUI, ADD, TEXT,cYellow, "npp+" - Нарушение правил поставок
         GUI, ADD, TEXT,cYellow, "rk+" - RK
         
+        GUI, ADD, TEXT,cBlue, Помощь в PM:
+
+        GUI, ADD, TEXT,cYellow, "pmnrd+" - Не нарушайте NRD
+        GUI, ADD, TEXT,cYellow, "pmooc+" - Не переходите на OOC in IC
+        GUI, ADD, TEXT,cYellow, "pmmic+" - Не нарушайте правила микрофона
+        GUI, ADD, TEXT,cYellow, "pmsp+" - Запрашиваем отыгровку SoundPad
+        GUI, ADD, TEXT,cYellow, "pmna+" - Запрашиваем начало ситуации в лс
+        
         WinSet, TransColor, %CustomColor3% 210
 
-        Gui, Show, x0 y0 NoActivate, window. 
+        Gui, Show, % "x" 0 " y" 0 " w" 450 " NoActivate", window.
 
     }
 
@@ -509,7 +579,6 @@ return
 ; ----------------------
 ; FUNCTIONS ------------
 ; ----------------------
-
 ShowCounters()
 {
 
@@ -739,6 +808,19 @@ CountReport(ReportType = "first", IsShowCounters = "N")
     {
         ShowCounters()
     }
+}
+
+GettingScreenResolution() {
+
+    result := []
+
+    SysGet, PrimaryMonitorNumber, MonitorPrimary
+    SysGet, MonitorData, Monitor, PrimaryMonitorNumber
+
+    result.Push(MonitorDataRight)
+    result.Push(MonitorDataBottom)
+
+    Return result
 }
 
 ; Loading configs
