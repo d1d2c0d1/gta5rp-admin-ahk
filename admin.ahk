@@ -1,4 +1,5 @@
 #NoEnv
+#Include libraries/JSON.ahk
 #SingleInstance force
 #MaxHotkeysPerInterval 99000000
 #HotkeyInterval 99000000
@@ -456,6 +457,9 @@ return
     If State2
     {
 
+        FileRead, JsonFields, keys.json
+        FieldKeys := JSON.Load(JsonFields)
+        
         CustomColor3 = EEAA99
 
         Gui +LastFound +AlwaysOnTop -Caption +ToolWindow +E0x20
@@ -466,41 +470,31 @@ return
         Gui, Font, w1000
 
         GUI, ADD,TEXT, cRed, Бинды клавиш:
-        GUI, ADD, TEXT, cYellow, Alt+1 - Лечу
-        GUI, ADD, TEXT, cYellow, Alt+2 - Преследили, но ничего нет
-        GUI, ADD, TEXT, cYellow, Alt+3 - Отправляем на форум | не следил
-        GUI, ADD, TEXT, cYellow, Alt+4 - Не телепортируем Транспорт
-        GUI, ADD, TEXT, cYellow, Alt+5 - Не телепортируем/оживляем Игроков
-        GUI, ADD, TEXT, cYellow, Alt+6 - Нарушение правил подачи Репорта
-        GUI, ADD, TEXT, cYellow, Alt+7 - Не работает МИКРОФОН
-        GUI, ADD, TEXT, cYellow, Alt+8 - Не сдается бабочка
-        GUI, ADD, TEXT, cYellow, Alt+9 - Пропал HUD/Карта
-        GUI, ADD, TEXT, cYellow, Alt+0 - Вы получили наказание от Администрации
-        GUI, ADD, TEXT, cYellow, Alt+Q - Закрываю репорт
-        GUI, ADD, TEXT, cYellow, Alt+W - Решите через СУД или ПРОКОВ
-        GUI, ADD, TEXT, cYellow, Alt+E - Вызовите ПОЛИЦИЮ
-        GUI, ADD, TEXT, cYellow, Alt+R - Вызовите EMS
-        GUI, ADD, TEXT, cYellow, Alt+T - Обратитесь на технический раздел
-        GUI, ADD, TEXT, cYellow, Alt+A - Вы были наказаны за [Указать причину]
-        GUI, ADD, TEXT, cYellow, Alt+D - Не разглашаем
-        GUI, ADD, TEXT, cYellow, Alt+F - Не запрещено
-        GUI, ADD, TEXT, cYellow, Alt+G - Уточните ВОПРОС
-        GUI, ADD, TEXT, cYellow, Alt+C - Узнайте у ИГРОКОВ
-        GUI, ADD, TEXT, cYellow, Alt+B - SUPPORT (при блоке)
-        GUI, ADD, TEXT, cYellow, Alt+H - Спрашивает где, что-то находится (GPS)
-        GUI, ADD, TEXT, cYellow, Alt+X - Как найти жалобу на форуме
+        
+        px := 10
+        py := 10
 
-        GUI, ADD, TEXT, cBlue, ФУНКЦИИ:
-        GUI, ADD, TEXT, cYellow, Alt+S - Посчитать первичный ответ
-        GUI, ADD, TEXT, cYellow, Alt+F12 - Авиризоваться
-        GUI, ADD, TEXT, cYellow, Alt+Y - REOF
-        GUI, ADD, TEXT, cYellow, Alt+V - Поиск новых репортов
-        GUI, ADD, TEXT, cYellow, F7 - Выключить поиск (Если багует)
-        GUI, ADD, TEXT, cYellow, F8 - Обновить список репортов (открытая консоль с репортами)
+        for each, fieldText in FieldKeys {
+
+            py += 25
+
+            if ( fieldText == "" ) {
+                py = 10
+                px += 360
+            }
+
+            addy = y%py%
+            addx = x%px%
+
+            GUI, ADD, TEXT, %addx% %addy% cYellow, % fieldText
+        }
         
         WinSet, TransColor, %CustomColor3% 210
 
-        Gui, Show, x0 y0 NoActivate, window. 
+        ScreenData := GettingScreenResolution()
+        winY := ScreenData[2] - 478
+
+        Gui, Show, % "x" 0 " y" winY " w1250 h450 NoActivate", window.
 
     }
 
@@ -516,7 +510,8 @@ return
     If State3
     {
 
-        ScreenData := GettingScreenResolution()
+        FileRead, JsonFields, commands.json
+        FieldCommands := JSON.Load(JsonFields)
 
         CustomColor3 = EEAA99
 
@@ -528,37 +523,31 @@ return
         Gui, Font, w1000
 
         GUI, ADD,TEXT,cRed, Введите этот текст в консоль и нажмите пробел:
-        GUI, ADD, TEXT,cYellow, "nrd+" - NonRP Drive
-        GUI, ADD, TEXT,cYellow, "nsp+" - NonRP SoundPad
-        GUI, ADD, TEXT,cYellow, "pg+" - PG
-        GUI, ADD, TEXT,cYellow, "db+" - DB
-        GUI, ADD, TEXT,cYellow, "ooc+" - OOC in IC
-        GUI, ADD, TEXT,cYellow, "zap+" - Запрещенный слова (на букву П/Ш/Д)
-        GUI, ADD, TEXT,cYellow, "dm+" - DM
-        GUI, ADD, TEXT,cYellow, "dmzz+" - DM in ZZ
-        GUI, ADD, TEXT,cYellow, "dob+" - Добив
-        GUI, ADD, TEXT,cYellow, "dobu+" - Добив уводящий от RP
-        GUI, ADD, TEXT,cYellow, "amo+" - Аморальные действия
-        GUI, ADD, TEXT,cYellow, "lut+" - Лутерство
-        GUI, ADD, TEXT,cYellow, "cbm+" - Crime без маски
-        GUI, ADD, TEXT,cYellow, "bg+" - Байт Государственной структуры
-        GUI, ADD, TEXT,cYellow, "bc+" - Байт Мафии
-        GUI, ADD, TEXT,cYellow, "ngs+" - NonRP Гос. сотрудник
-        GUI, ADD, TEXT,cYellow, "nst+" - NonRP Стяжки
-        GUI, ADD, TEXT,cYellow, "npp+" - Нарушение правил поставок
-        GUI, ADD, TEXT,cYellow, "rk+" - RK
-        
-        GUI, ADD, TEXT,cBlue, Помощь в PM:
 
-        GUI, ADD, TEXT,cYellow, "pmnrd+" - Не нарушайте NRD
-        GUI, ADD, TEXT,cYellow, "pmooc+" - Не переходите на OOC in IC
-        GUI, ADD, TEXT,cYellow, "pmmic+" - Не нарушайте правила микрофона
-        GUI, ADD, TEXT,cYellow, "pmsp+" - Запрашиваем отыгровку SoundPad
-        GUI, ADD, TEXT,cYellow, "pmna+" - Запрашиваем начало ситуации в лс
-        
-        WinSet, TransColor, %CustomColor3% 210
+        px := 10
+        py := 10
 
-        Gui, Show, % "x" 0 " y" 0 " w" 450 " NoActivate", window.
+        for each, fieldText in FieldCommands {
+
+            py += 25
+
+            if ( fieldText == "" ) {
+                py = 10
+                px += 360
+            }
+
+            addy = y%py%
+            addx = x%px%
+
+            GUI, ADD, TEXT, %addx% %addy% cYellow, % fieldText
+        }
+        
+        WinSet, TransColor, %CustomColor3% 230
+
+        ScreenData := GettingScreenResolution()
+        winY := ScreenData[2] - 378
+
+        Gui, Show, % "x" 0 " y" winY " w1100 h350 NoActivate", window.
 
     }
 
@@ -617,9 +606,9 @@ ShowCounters()
         {
             FileReadLine, LineData, %A_ScriptDir%\counters\%FormattedDate%-first.txt, 1
             
-            if ( LineData * 1 >= 80 ) {
+            if ( LineData * 1 >= 100 ) {
                 GUI, ADD, TEXT, c00e36a, %DayOfWeek% (%FormattedDate%): %LineData%
-            } else if ( LineData * 1 >= 50 ) {
+            } else if ( LineData * 1 >= 60 ) {
                 GUI, ADD, TEXT, cf7db23, %DayOfWeek% (%FormattedDate%): %LineData%
             } else if ( LineData * 1 >= 0 ) {
                 GUI, ADD, TEXT, cf72f47, %DayOfWeek% (%FormattedDate%): %LineData%
@@ -639,8 +628,12 @@ ShowCounters()
     Gui, Font, s8
     GUI, ADD, TEXT, cWhite, Данные являются примерными
 
-    WinSet, TransColor, c000000 250
-    Gui, Show, x0 y0 NoActivate, window. 
+    WinSet, TransColor, c000000 210
+
+    ScreenData := GettingScreenResolution()
+    winY := ScreenData[2] - 478
+
+    Gui, Show, % "x" 0 " y" winY " w300 h450 NoActivate", window.
 }
 
 FindNotAnsweredReport()
