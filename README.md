@@ -1,7 +1,7 @@
 # GTA5RP Admins binder [AHK]
 [![Build Status](https://gta5rp.com/images/logo.png)](https://gta5rp.com/)
 
-## Как использовать [AHK вариант]
+## Как использовать [AHK вариант | EXE вариант]
 
 0. Скачайте последнюю сборку: [скачать последнюю версию](https://github.com/d1d2c0d1/gta5rp-admin-ahk/archive/refs/heads/master.zip)
 1. Откройте файл `admin.ahk` или `admin.exe` от имени Администратора.
